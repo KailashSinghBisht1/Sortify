@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sortify | Tower of Hanoi</title>
+
+    <!-- Common Global CSS -->
+    <link rel="stylesheet" href="../../css/common.css" />
+
+    <!-- Hanoi Specific CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- ================= NAVBAR ================= -->
+
+    <!-- ================= APP ================= -->
+    <div class="container app">
+      <!-- ================= HEADER ================= -->
+      <header class="header">
+        <div>
+          <h1>
+            Tower of Hanoi
+            <span class="header-subtitle">
+              A Recursive Algorithm Visualizer
+            </span>
+          </h1>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <span>Current Move</span>
+            <strong id="current-move">0</strong>
+          </div>
+          <div class="stat">
+            <span>Total Moves</span>
+            <strong id="total-moves">0</strong>
+          </div>
+          <div class="stat">
+            <span>Recursion Depth</span>
+            <strong id="recursion-depth">0</strong>
+          </div>
+        </div>
+      </header>
+
+      <!-- ================= MAIN ================= -->
+      <main class="main">
+        <!-- ===== TOWERS ===== -->
+        <section class="card towers-section">
+          <div class="towers" id="towers-container">
+            <!-- tower A -->
+            <div class="tower" id="tower-A">
+              <h3>Source</h3>
+              <div class="peg"></div>
+              <div class="base"></div>
+              <div class="disk-container" id="disks-A"></div>
+            </div>
+
+            <!-- tower B -->
+            <div class="tower" id="tower-B">
+              <h3>Auxiliary</h3>
+              <div class="peg"></div>
+              <div class="base"></div>
+              <div class="disk-container" id="disks-B"></div>
+            </div>
+
+            <!-- tower C -->
+            <div class="tower" id="tower-C">
+              <h3>Destination</h3>
+              <div class="peg"></div>
+              <div class="base"></div>
+              <div class="disk-container" id="disks-C"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== CALL STACK ===== -->
+        <aside class="card call-stack-section">
+          <h3>Call Stack</h3>
+
+          <div class="stack-legend">
+            <div class="legend-item">
+              <span class="legend-color active"></span> Active
+            </div>
+            <div class="legend-item">
+              <span class="legend-color completed"></span> Completed
+            </div>
+            <div class="legend-item">
+              <span class="legend-color base-case"></span> Base Case
+            </div>
+          </div>
+
+          <div class="stack" id="call-stack"></div>
+        </aside>
+
+        <!-- ===== ALGORITHM ===== -->
+        <section class="card algorithm-section">
+          <h3>Algorithm Steps</h3>
+          <div class="algorithm-steps">
+            <div class="step">1. Move n−1 disks from Source to Auxiliary</div>
+            <div class="step">2. Move largest disk to Destination</div>
+            <div class="step">
+              3. Move n−1 disks from Auxiliary to Destination
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- ================= CONTROLS ================= -->
+      <footer class="control-panel card">
+        <div class="control-group">
+          <label for="num-disks">Number of Disks</label>
+          <select id="num-disks">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="speed-control">Animation Speed</label>
+          <select id="speed-control">
+            <option value="2000">Very Slow</option>
+            <option value="1200">Slow</option>
+            <option value="800" selected>Normal</option>
+            <option value="400">Fast</option>
+            <option value="200">Very Fast</option>
+          </select>
+        </div>
+
+        <div class="control-buttons">
+          <button id="start-btn" class="primary">Start</button>
+          <button id="pause-btn" class="warn" disabled>Pause</button>
+          <button id="reset-btn" class="danger">Reset</button>
+          <button id="step-btn">Step</button>
+        </div>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

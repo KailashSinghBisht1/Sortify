@@ -1,0 +1,328 @@
+/* ==================================================
+   SORTIFY – COMMON GLOBAL CSS
+   Shared by Sorting, Hanoi, Graph & Hub
+   ================================================== */
+
+/* ================= THEME VARIABLES ================= */
+
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --surface: #111827;
+  --card: #0b1220;
+  --border: #1f2937;
+
+  --primary: #38bdf8;
+  --secondary: #22c55e;
+  --accent: #f472b6;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+
+  --radius: 16px;
+}
+
+/* ================= LIGHT THEME ================= */
+
+body.light {
+  --bg: #f8fafc;
+  --panel: #e5e7eb;
+  --surface: #e5e7eb;
+  --card: #ffffff;
+  --border: #e5e7eb;
+
+  --primary: #0284c7;
+  --secondary: #16a34a;
+  --accent: #db2777;
+  --warn: #d97706;
+  --danger: #dc2626;
+
+  --text: #020617;
+  --muted: #475569;
+}
+
+/* ================= RESET ================= */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Arial,
+    sans-serif;
+}
+
+/* ================= BODY BASE ================= */
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(1200px 600px at 10% 10%, #0b2447, transparent),
+    radial-gradient(1000px 600px at 90% 10%, #1f2937, transparent), var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ================= HEADER / NAVBAR ================= */
+
+.nav-container {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  padding: 14px 10px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: #020617;
+
+  /* glow */
+  text-shadow: 0 0 4px rgba(56, 189, 248, 0.45),
+    0 0 10px rgba(34, 197, 94, 0.35);
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background: rgba(17, 24, 39, 0.85);
+}
+
+body.light .navbar {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* ================= NAV BUTTONS ================= */
+
+.navbar a,
+.navbar button {
+  all: unset;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, var(--primary), #60a5fa);
+  color: #020617;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.navbar a:hover,
+.navbar button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.35);
+}
+
+/* Disabled nav items */
+.navbar .disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: auto;
+  position: relative;
+}
+
+.navbar .disabled::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  cursor: not-allowed;
+}
+
+.navbar .disabled:hover::after {
+  content: "\f05e";
+  font-family: FontAwesome;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 14px;
+  color: var(--danger);
+}
+
+/* Special nav buttons */
+.navbar .start {
+  background: linear-gradient(135deg, var(--secondary), #4ade80);
+}
+
+#reset {
+  background: linear-gradient(135deg, var(--warn), #fbbf24);
+}
+
+#stop {
+  background: linear-gradient(135deg, var(--danger), #f87171);
+}
+
+/* ================= COMMON CONTROLS ================= */
+
+select,
+.menu,
+button {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 14px;
+  height: 42px;
+}
+
+select:hover,
+button:hover {
+  border-color: var(--primary);
+}
+
+select:disabled,
+.menu:disabled,
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.menu option {
+  background: var(--panel);
+  color: var(--text);
+}
+
+/* ================= INFO / STATS BAR ================= */
+
+.info-bar,
+.stats {
+  width: min(92vw, 1100px);
+  margin: 12px auto;
+  padding: 10px 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+body.light .info-bar,
+body.light .stats {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* ================= COMMON VISUALIZER BOX ================= */
+
+.visualizer-box {
+  width: min(92vw, 1100px);
+  height: 460px;
+  margin: auto;
+
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(0, 0, 0, 0.15)
+    ),
+    var(--card);
+
+  border-radius: 18px;
+  padding: 14px;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* ================= MODAL / OVERLAY ================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 14px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.modal label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.modal input,
+.modal textarea {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: var(--panel);
+  color: var(--text);
+}
+
+.modal input.error,
+.modal textarea.error {
+  border-color: var(--danger);
+}
+
+.modal input.success,
+.modal textarea.success {
+  border-color: var(--secondary);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+  margin-top: auto;
+  padding: 18px 10px;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ================= ACCESSIBILITY ================= */
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .visualizer-box {
+    height: 380px;
+  }
+}
