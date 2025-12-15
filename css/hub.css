@@ -1,0 +1,187 @@
+/* ================================
+   SORTIFY HUB – SAME TO SAME NAVBAR
+   ================================ */
+
+/* -------- THEME -------- */
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --card: #0b1220;
+  --primary: #38bdf8;
+  --secondary: #22c55e;
+  --accent: #f472b6;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+}
+
+/* -------- LIGHT THEME -------- */
+body.light {
+  --bg: #f8fafc;
+  --panel: #e5e7eb;
+  --card: #ffffff;
+  --primary: #0284c7;
+  --secondary: #16a34a;
+  --accent: #db2777;
+  --warn: #d97706;
+  --danger: #dc2626;
+  --text: #020617;
+  --muted: #475569;
+}
+
+/* -------- RESET -------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* -------- BODY -------- */
+body {
+  min-height: 100vh;
+  background: radial-gradient(1200px 600px at 10% 10%, #0b2447, transparent),
+    radial-gradient(1000px 600px at 90% 10%, #1f2937, transparent), var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ================= NAVBAR ================= */
+/* IMPORTANT: column layout to mimic Sortify */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  flex-direction: column; /* 🔥 THIS IS THE KEY */
+  align-items: center;
+
+  background: rgba(17, 24, 39, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* -------- TITLE (SAME AS PROJECT) -------- */
+.title {
+  width: 100%;
+  text-align: center;
+  padding: 14px 10px;
+
+  font-family: system-ui, -apple-system, "Segoe UI", "Segoe UI Variable", Ubuntu,
+    Arial, sans-serif;
+
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+
+  background: linear-gradient(90deg, #38bdf8, #22c55e);
+  color: #020617;
+}
+
+/* -------- BUTTON ROW -------- */
+/* -------- BUTTON ROW -------- */
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 12px;
+}
+
+/* -------- BUTTON STYLE -------- */
+.nav-buttons button {
+  all: unset;
+  cursor: pointer;
+  padding: 9px 18px;
+  border-radius: 12px;
+
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #020617;
+
+  background: linear-gradient(135deg, var(--primary), #60a5fa);
+
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+/* -------- HOVER -------- */
+.nav-buttons button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+
+  box-shadow: 0 10px 26px rgba(56, 189, 248, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+/* -------- ACTIVE (PRESS) -------- */
+.nav-buttons button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(56, 189, 248, 0.35),
+    inset 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* -------- FOCUS (ACCESSIBILITY) -------- */
+.nav-buttons button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.6),
+    0 10px 26px rgba(56, 189, 248, 0.55);
+}
+
+/* ================= IFRAME ================= */
+
+/* IFRAME BASE */
+/* ================= IFRAME TRANSITION ================= */
+
+iframe {
+  width: 100%;
+  height: calc(100vh - 120px);
+  border: none;
+  background: var(--bg);
+
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+
+  transition: opacity 0.35s ease, transform 0.35s ease, filter 0.35s ease;
+}
+
+/* Jab switch ho raha ho */
+iframe.hide {
+  opacity: 0;
+  transform: translateY(12px) scale(0.97);
+  filter: blur(6px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.2rem;
+  }
+}
+
+.title {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+/* ONLY subtitle animates */
+.title span {
+  background: linear-gradient(90deg, #020617, #38bdf8, #22c55e, #020617);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+
+  animation: shine 4s alternate-reverse infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}

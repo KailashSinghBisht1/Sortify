@@ -1,0 +1,42 @@
+/* ================================
+   SORTING VISUALIZER ONLY
+   ================================ */
+
+.array {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.cell {
+  flex: 1;
+  position: relative;
+  border-radius: 8px 8px 4px 4px;
+  background: linear-gradient(180deg, #cbd5f5, #94a3ff);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: height 0.25s ease, background 0.2s ease, transform 0.15s ease;
+  min-height: 6px;
+}
+
+.cell span {
+  position: absolute;
+  bottom: -18px;
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text);
+}
+
+.cell.current {
+  background: linear-gradient(180deg, var(--primary), #7dd3fc);
+  transform: scaleX(1.05);
+}
+
+.cell.min {
+  background: linear-gradient(180deg, var(--accent), #f9a8d4);
+}
+
+.cell.done {
+  background: linear-gradient(180deg, var(--secondary), #86efac);
+}
